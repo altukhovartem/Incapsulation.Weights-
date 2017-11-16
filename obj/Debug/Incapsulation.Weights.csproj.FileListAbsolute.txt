@@ -1,0 +1,2 @@
+C:\MySource\Incapsulation.Weights-\obj\Debug\Incapsulation.Weights.csprojResolveAssemblyReference.cache
+C:\MySource\Incapsulation.Weights-\obj\Debug\Incapsulation.Weights.csproj.CoreCompileInputs.cache
