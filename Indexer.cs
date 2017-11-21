@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Incapsulation.Weights
 {
-    struct Indexer
+    class Indexer
     {
         private readonly double[] originalArray;
         public double[] SubArray { get; private set; }
@@ -36,10 +36,6 @@ namespace Incapsulation.Weights
             }
         }
 
-         
-
-
-
         public Indexer(double[] array, int start, int length)
         {
             if (start < 0 || start > array.Length || length < 0 || length > array.Length - start)
@@ -48,7 +44,7 @@ namespace Incapsulation.Weights
             }
             this.originalArray = array;
             SubArray = new double[length];
-            Array.Copy(originalArray, start, SubArray, 0, length);
+            SubArray = array.Skip(start).Take(length).ToArray() ;
         }
 
     }
