@@ -8,44 +8,40 @@ namespace Incapsulation.Weights
 {
     class Indexer
     {
-        private readonly double[] originalArray;
-        public double[] SubArray { get; private set; }
-        
+        private readonly int start;
+        private readonly int length;
+        private double[] array = null;
+
         public int Length
         {
-            get { return SubArray.Length; }
+            get { return length; }
         }
 
         public double this[int index]
         {
             get
             {
-                if (index < 0 || index > SubArray.Length)
+                if (index < 0 || index > length)
                 {
                     throw new IndexOutOfRangeException();
                 }
-                return SubArray[index];
+                return array[start + index];
             }
             set
             {
-                if (index < 0 || index > SubArray.Length)
+                if (index < 0 || index > length)
                 {
                     throw new IndexOutOfRangeException();
                 }
-                SubArray[index] = value;
+                array[start + index] = value;
             }
         }
 
         public Indexer(double[] array, int start, int length)
         {
-            if (start < 0 || start > array.Length || length < 0 || length > array.Length - start)
-            {
-                throw new ArgumentException();
-            }
-            this.originalArray = array;
-            SubArray = new double[length];
-            SubArray = array.Skip(start).Take(length).ToArray() ;
+            this.array = array;
+            this.start = start;
+            this.length = length;
         }
-
     }
 }
